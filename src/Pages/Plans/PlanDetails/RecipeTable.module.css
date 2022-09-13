@@ -1,0 +1,46 @@
+.recipeTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.recipeTable tr th:nth-child(1),
+.recipeTable tr td:nth-child(1) {
+    width: 15%;
+}
+
+.recipeTable tr th:nth-child(2),
+.recipeTable tr td:nth-child(2) {
+    width: 20%;
+}
+
+.recipeTable tr th:nth-child(3),
+.recipeTable tr td:nth-child(3) {
+    width: 50%;
+}
+
+.recipeTable tr th:nth-child(4),
+.recipeTable tr td:nth-child(4) {
+    width: 15%;
+}
+
+.recipeTable tr td,
+.recipeTable tr th {
+    padding: 1rem;
+    text-align: left;
+    /* border: 1px solid black; */
+}
+
+/* .recipeTable td:first-child {
+    border-right: 1px solid var(--space-cadet);
+} */
+
+.recipeTable th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.recipeTable tr:not(:last-child) td {
+    border-bottom: 1px solid var(--space-cadet);
+}

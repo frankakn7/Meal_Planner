@@ -1,0 +1,25 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    padding: 0.5rem;
+}
+
+.redButton {
+    background-color: var(--imperial-red);
+    font-size: 1.3rem;
+    padding: 0.5rem;
+}
+.actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

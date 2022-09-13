@@ -1,0 +1,21 @@
+.main {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+}
+
+.half {
+    flex: 1;
+}
+
+.rightHalf {
+    flex: 1;
+    border-left: 2px solid var(--space-cadet);
+    min-height: 30rem;
+    /* animation-name: enterFromRight;
+    animation-duration: 0.5s; */
+}
+
+.recipes {
+    width: 100%;
+}

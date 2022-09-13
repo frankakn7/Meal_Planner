@@ -1,0 +1,19 @@
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    padding: 0.2rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2rem;
+    width: 80%;
+}
+
+.plusIcon {
+    color: var(--yes-green);
+    font-size: 1.6rem;
+    padding: 0.2rem;
+}

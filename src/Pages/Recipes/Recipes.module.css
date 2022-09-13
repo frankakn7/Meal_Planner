@@ -1,0 +1,54 @@
+.main {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+}
+
+.half {
+    flex: 1;
+}
+
+.rightHalf {
+    flex: 1;
+    border-left: 2px solid var(--space-cadet);
+    min-height: 30rem;
+    /* animation-name: enterFromRight;
+    animation-duration: 0.5s; */
+}
+
+.recipes {
+    width: 100%;
+}
+
+.boxesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.addButtonContainer {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    margin: 0.2rem;
+}
+/* @keyframes enterFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+} */

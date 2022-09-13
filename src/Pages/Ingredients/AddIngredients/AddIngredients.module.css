@@ -1,0 +1,68 @@
+.main {
+    text-align: center;
+    padding: 1rem;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    max-height: 15rem;
+    overflow: scroll;
+}
+
+.table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.table td,
+.table th {
+    padding: 0.3rem;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    padding: 0.2rem;
+}
+
+.redButton {
+    background-color: var(--imperial-red);
+    font-size: 1.3rem;
+    padding: 0.2rem;
+}
+
+.table tr > td > .redButton {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.table tr:not(:last-child):hover {
+    background-color: var(--cultured);
+}
+
+.table tr:hover > td > .redButton {
+    visibility: visible;
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.actions > div > .redButton,
+.actions > div >.greenButton {
+    padding: 0.4rem;
+}
+
+.errorMessage {
+    text-align: center;
+    color: var(--imperial-red)
+}

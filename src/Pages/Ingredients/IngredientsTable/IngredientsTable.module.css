@@ -1,0 +1,35 @@
+.ingredientTable {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+.ingredientTable th {
+    padding-bottom: 1rem;
+}
+
+.ingredientTable tbody tr {
+    transition: all 0.2s;
+}
+
+.ingredientTable tbody tr:hover {
+    background-color: var(--cultured);
+    transform: scale(1.1);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.ingredientTable tbody tr:active {
+    transform: scale(1);
+    background-color: var(--cultured);
+    transition: all 0.1s;
+}
+
+.ingredientTable tr td {
+    text-align: center;
+    padding: 1rem;
+    width: 25%;
+}
+
+.ingredientTable tr:not(:last-child) td {
+    border-bottom: 1px solid var(--space-cadet);
+}

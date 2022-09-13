@@ -1,0 +1,89 @@
+.recipeTable tr th,
+.recipeTable tr td:nth-child(1) {
+    display: none;
+}
+
+.dayHeader{
+    background-color: var(--space-cadet);
+    color: white;
+    padding: 1rem;
+    /* width: 10%; */
+}
+
+.dayTable tr:not(first-child()) td {
+    padding: 0.5rem;
+    background-color: var(--cultured);
+}
+
+.dayTable {
+    width: 90%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0.5rem 0;
+}
+
+.dayTable td{
+    /* background-color: var(--cultured); */
+    padding: 1rem;
+}
+
+/* .column {
+    border-collapse: collapse;
+    background-color: var(--cultured);
+} */
+
+ .recipeCell {
+    border-bottom: 2px solid var(--space-cadet);
+}
+
+.ingredientsCell {
+    border-bottom: 2px solid var(--space-cadet);
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.recipeNames {
+    /* display: flex;
+    flex-direction: column; */
+    margin-bottom: 1rem;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.6rem;
+    width: 2rem;
+    padding: 0.2rem;
+}
+
+/* .ingredientsCell {
+    width: 20%;
+} */
+
+.singleRecipeName {
+    text-align: center;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px dotted var(--space-cadet);
+}
+
+.dayNumber {
+    font-size: small;
+    font-weight: normal;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.changeWeekButton {
+    font-size: 1.6rem;
+    width: 2.2rem;
+    padding: 0.5rem;
+}

@@ -1,0 +1,28 @@
+.recipes {
+    width: 100%;
+}
+
+.boxesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.addButtonContainer {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    margin: 0.2rem;
+}   

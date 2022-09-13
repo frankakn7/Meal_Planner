@@ -1,0 +1,86 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 22rem;
+}
+
+.top {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top > div {
+    flex: 1;
+}
+
+.top .nameContainer {
+    flex: 3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.top .nameContainer input {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.actions {
+    display: flex;
+    justify-content: right;
+    align-content: center;
+}
+
+.redButton {
+    background-color: var(--imperial-red);
+    font-size: 1.3rem;
+    width: 2.5rem;
+    margin: 0.2rem;
+}
+
+.edit {
+    margin: 0.2rem;
+    font-size: 1.2rem;
+    width: 2.5rem;
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    margin: 0.2rem;
+}
+
+.cancelSave .redButton {
+    width: auto;
+}
+
+.cancelSave {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.xIcon .redButton {
+    padding: 0.2rem;
+    width: 2rem;
+}
+
+.quantityInput input{
+    width: 2rem;
+}
+
+.error {
+    color: var(--imperial-red)
+}
+
+.ingredientTable tbody tr:hover {
+    transform: none;
+}

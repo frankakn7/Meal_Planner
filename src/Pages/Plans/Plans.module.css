@@ -1,0 +1,39 @@
+.main {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+}
+
+.half {
+    flex: 1;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+.plans {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* max-height: 37rem;
+    overflow: scroll; */
+}
+
+.rightHalf {
+    flex: 1;
+    border-left: 2px solid var(--space-cadet);
+    min-height: 30rem;
+    /* animation-name: enterFromRight;
+    animation-duration: 0.5s; */
+}
+
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 3.5rem;
+    border-radius: 0.5rem;
+    height: 5rem;
+    width: 5rem;
+    margin: 0.2rem;
+}   

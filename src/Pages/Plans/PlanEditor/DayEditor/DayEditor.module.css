@@ -1,0 +1,62 @@
+.modal {
+    width: 80%;
+    left: 10%;
+}
+
+.content {
+    padding: 2rem;
+    display: flex;
+}
+
+.recipeList {
+    flex: 1;
+    max-height: 26rem;
+    overflow: scroll;
+    overscroll-behavior: contain;
+}
+
+.dayDetails {
+    flex: 1;
+    max-height: 25rem;
+    border-left: 2px solid var(--space-cadet);
+    overflow: scroll;
+    overscroll-behavior: contain;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.addRecipeModal {
+    width: 90%;
+    left: 5%;
+}
+
+.addRecipeModalContent {
+    max-height: 37rem;
+    overflow: scroll;
+}
+
+.redButton {
+    background-color: var(--imperial-red);
+    font-size: 1.3rem;
+    margin: 0.2rem;
+}
+.greenButton {
+    background-color: var(--yes-green);
+    font-size: 1.3rem;
+    margin: 0.2rem;
+}
+.actions {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.recipeTable tr th:first-child,
+.recipeTable tr:not(:last-child) td:first-child {
+    display: none;
+}
+
+.recipeTable tr:last-child td:nth-child(2) {
+    display: none;
+}
