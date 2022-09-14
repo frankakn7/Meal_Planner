@@ -19,6 +19,7 @@ const RecipeTable = (props) => {
                     <th>Recipes</th>
                     <th>Ingredients</th>
                     <th>Cost</th>
+                    {props.customDataHeads}
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@ const RecipeTable = (props) => {
                             ))}
                         </td>
                         <td>{recipe.total} €</td>
+                        {props.customDataCells && props.customDataCells(recipe)}
                     </tr>
                 ))}
                 <tr>

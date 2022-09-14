@@ -1,10 +1,10 @@
 .recipeTable {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
-.recipeTable tr th:nth-child(1),
+/* .recipeTable tr th:nth-child(1),
 .recipeTable tr td:nth-child(1) {
     width: 15%;
 }
@@ -22,7 +22,7 @@
 .recipeTable tr th:nth-child(4),
 .recipeTable tr td:nth-child(4) {
     width: 15%;
-}
+} */
 
 .recipeTable tr td,
 .recipeTable tr th {

@@ -52,6 +52,14 @@
     justify-content: space-around;
 }
 
+.recipeTable {
+    table-layout: auto;
+}
+
+.recipeTable tr td:nth-child(3) {
+    width: 30% !important;
+}
+
 .recipeTable tr th:first-child,
 .recipeTable tr:not(:last-child) td:first-child {
     display: none;

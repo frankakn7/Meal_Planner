@@ -1,3 +1,5 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Button from "../../../../Interface/Button/Button";
 import Confirmation from "../../../../Interface/Confirmation/Confirmation";
@@ -18,7 +20,7 @@ const DayEditor = (props) => {
 
     const [confirm, setConfirm] = useState(false);
 
-    const [addedRecipes, setAddedRecipes] = useState(props.day.recipes);
+    const [addedRecipes, setAddedRecipes] = useState(props.planRecipes);
 
     const exitEditing = () => {
         setRecipeTemplate({
@@ -39,6 +41,16 @@ const DayEditor = (props) => {
     const handleSaveDay = () => {
         props.saveDay(addedRecipes)
         props.exitEditing()
+    }
+
+    const removeRecipe = (recipeId) => {
+        setAddedRecipes((prevState) => prevState.filter((recipe) => recipe.id !== recipeId))
+    }
+
+    const customDataCellsForRecipes = (recipe) => {
+        return (<td>
+            <Button classes={classes.redButton} onClick={() => removeRecipe(recipe.id)}><FontAwesomeIcon icon={faXmark}/></Button>
+        </td>)
     }
 
     return (
@@ -83,8 +95,9 @@ const DayEditor = (props) => {
                         <h1>{props.day.name} (Day {props.day.id})</h1>
                     </div>
                     <RecipeTable
-                        recipes={addedRecipes}
+                        recipes={addedRecipes.filter((recipe) => recipe.day === props.day.id)}
                         classes={classes.recipeTable}
+                        customDataCells={customDataCellsForRecipes}
                     />
                     <div className={classes.actions}>
                         <Button classes={classes.redButton} onClick={() => setConfirm(true)}>

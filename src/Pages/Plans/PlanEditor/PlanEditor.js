@@ -40,9 +40,13 @@ const PlanEditor = (props) => {
         return counts;
     };
 
+    const sortByQuantity = (a,b) => {
+        return a.quantity > b.quantity ? -1 : 1;
+    }
+
     const copyShoppingList = () => {
-        const copyText = neededIngredients.reduce(
-            (text, ingredient) => text + ingredient.quantity + "x " + ingredient.name + "\n",
+        const copyText = neededIngredients.sort(sortByQuantity).reduce(
+            (text, ingredient) => text + reduceToPoint2(ingredient.quantity) + "x " + ingredient.name + " (" +ingredient.info+ ")\n",
             ""
         );
         navigator.clipboard.writeText(copyText);
@@ -107,8 +111,8 @@ const PlanEditor = (props) => {
             .catch((error) => setIsError(error.message));
     };
 
-    const saveDay = (addedRecipes) => {
-        setPlan((prevState) => ({ ...plan, recipes: [...plan.recipes, ...addedRecipes] }));
+    const saveDay = (newRecipesList) => {
+        setPlan((prevState) => ({ ...plan, recipes: [...newRecipesList] }));
     };
 
     const navigate = useNavigate();
@@ -193,6 +197,7 @@ const PlanEditor = (props) => {
             {isEditDay !== false && (
                 <DayEditor
                     recipes={props.recipes}
+                    planRecipes={plan.recipes}
                     day={isEditDay}
                     ingredients={props.ingredients}
                     newRecipeHandler={props.newRecipeHandler}
