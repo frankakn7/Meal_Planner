@@ -1,4 +1,4 @@
-import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Fragment, useState } from "react";
 import Button from "../../../Interface/Button/Button";
@@ -23,6 +23,22 @@ const RecipeDetails = (props) => {
             .deleteRecipeHandler(props.recipe.id)
             .then(props.deselect)
             .catch((error) => {setIsError(error.message); setConfirm(false)});
+    };
+
+    const sortByQuantity = (a,b) => {
+        return a.quantity > b.quantity ? -1 : 1;
+    }
+
+    const reduceToPoint2 = (number) => {
+        return parseFloat((Math.round(number * 100) / 100).toFixed(2));
+    };
+
+    const copyShoppingList = () => {
+        const copyText = props.recipe.ingredients.sort(sortByQuantity).reduce(
+            (text, ingredient) => text + reduceToPoint2(ingredient.quantity) + "x " +(ingredient.unit !== "item" ? ingredient.unit + " " : "")+ ingredient.name + (ingredient.info ? " ("+ingredient.info+ ")" : "")+"\n",
+            ""
+        );
+        navigator.clipboard.writeText(copyText);
     };
 
     const totalRow = (
@@ -62,6 +78,9 @@ const RecipeDetails = (props) => {
                 customTableHeaderCells={<th>Quantity</th>}
                 customTableRows={totalRow}
             />
+            <div className={classes.copyButtonContainer}>
+                <Button onClick={copyShoppingList}>Copy Ingredients <FontAwesomeIcon icon={faCopy}/> </Button>
+            </div>
         </div>
     );
 };

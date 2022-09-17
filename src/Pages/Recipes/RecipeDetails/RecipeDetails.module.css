@@ -43,3 +43,9 @@
 .error {
     color: var(--imperial-red)
 }
+
+.copyButtonContainer {
+    width: 80%;
+    display: flex;
+    justify-content: right;
+}

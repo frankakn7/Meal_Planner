@@ -17,7 +17,8 @@
     text-align: center;
     align-items: center;
     max-height: 30rem;
-    overflow: scroll;
+    overflow-y: scroll;
+    padding-top: 2rem;
 }
 
 .shoppingList {
@@ -49,7 +50,7 @@
     padding: 2rem;
     box-shadow: 2px 2px 4px 0px black;
     max-height: 20rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .actualList h2{
@@ -104,6 +105,20 @@
     font-size: 1.3rem;
     width: 2.5rem;
     margin: 0.2rem;
+}
+
+.save {
+    font-size: 1.3rem;
+    width: 2.5rem;
+    margin: 0.2rem;
+    background-color: var(--yes-green);
+}
+
+.erase {
+    font-size: 1.3rem;
+    width: 2.5rem;
+    margin: 0.2rem;
+    background-color: var(--warning-yellow);
 }
 
 .redButton {

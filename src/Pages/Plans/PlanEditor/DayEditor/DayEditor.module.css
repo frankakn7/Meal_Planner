@@ -11,7 +11,7 @@
 .recipeList {
     flex: 1;
     max-height: 26rem;
-    overflow: scroll;
+    overflow-y: scroll;
     overscroll-behavior: contain;
 }
 
@@ -19,7 +19,7 @@
     flex: 1;
     max-height: 25rem;
     border-left: 2px solid var(--space-cadet);
-    overflow: scroll;
+    overflow-y: scroll;
     overscroll-behavior: contain;
     padding: 1rem;
     padding-top: 0;
@@ -32,7 +32,7 @@
 
 .addRecipeModalContent {
     max-height: 37rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .redButton {

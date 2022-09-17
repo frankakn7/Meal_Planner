@@ -56,7 +56,11 @@
     background-color: var(--yes-green);
     font-size: 1.6rem;
     width: 2rem;
+    height: 2rem;
     padding: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .ingredientsCell {

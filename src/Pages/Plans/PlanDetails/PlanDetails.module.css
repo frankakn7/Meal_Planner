@@ -8,7 +8,7 @@
 .recipeContainer {
     width: 90%;
     max-height: 30rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .top {

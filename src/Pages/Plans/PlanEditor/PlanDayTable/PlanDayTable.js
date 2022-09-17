@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Button from "../../../../Interface/Button/Button";
@@ -10,7 +10,7 @@ const PlanDayTable = (props) => {
         []
     );
 
-    const [weekNum, setWeekNum] = useState(0);
+    
 
     const [visibleDays, setVisibleDays] = useState([]);
 
@@ -59,8 +59,8 @@ const PlanDayTable = (props) => {
     };
 
     useEffect(() => {
-        setVisibleDays([...Array(7).keys()].map((i) => getDayObject(i + weekNum * 7)));
-    }, [getDayObject, props.plan.recipes, weekNum]);
+        setVisibleDays([...Array(7).keys()].map((i) => getDayObject(i + props.weekNum * 7)));
+    }, [getDayObject, props.plan.recipes, props.weekNum]);
 
     return (
         <div className={classes.main}>
@@ -68,9 +68,9 @@ const PlanDayTable = (props) => {
                 {(!props.plan.new || props.isEditing) && (
                     <Button
                         classes={classes.changeWeekButton}
-                        disabled={weekNum === 0}
+                        disabled={props.weekNum === 0}
                         onClick={() => {
-                            setWeekNum((prevState) => prevState - 1);
+                            props.setWeekNum((prevState) => prevState - 1);
                         }}
                     >
                         <FontAwesomeIcon icon={faChevronLeft} />
@@ -114,7 +114,7 @@ const PlanDayTable = (props) => {
                                                     props.setIsEditDay(day);
                                                 }}
                                             >
-                                                +
+                                                <FontAwesomeIcon icon={faPlus}/>
                                             </Button>
                                         </div>
                                     )}
@@ -144,8 +144,8 @@ const PlanDayTable = (props) => {
                 {(!props.plan.new || props.isEditing) && (
                     <Button
                         classes={classes.changeWeekButton}
-                        disabled={(Math.max(...props.plan.recipes.map((recipe) => recipe.day)) < weekNum + 1 * 7) && !props.isEditing}
-                        onClick={() => setWeekNum((prevState) => prevState + 1)}
+                        disabled={(Math.max(...props.plan.recipes.map((recipe) => recipe.day)) < props.weekNum + 1 * 7) && !props.isEditing}
+                        onClick={() => props.setWeekNum((prevState) => prevState + 1)}
                     >
                         <FontAwesomeIcon icon={faChevronRight} />
                     </Button>

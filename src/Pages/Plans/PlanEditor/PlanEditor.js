@@ -1,4 +1,12 @@
-import { faCopy, faPencil, faSave, faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCopy,
+    faEraser,
+    faPencil,
+    faRotate,
+    faSave,
+    faTrashCan,
+    faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -16,8 +24,13 @@ const PlanEditor = (props) => {
 
     const [confirm, setConfirm] = useState(false);
     const [askAddNewFromPlan, setAskAddNewFromPlan] = useState(false);
+    const [confirmEraseWeek, setConfirmEraseWeek] = useState(false);
+    const [confirmRandom, setConfirmRandom] = useState(false)
+
     const [isEditing, setIsEditing] = useState(false);
     const [isError, setIsError] = useState(false);
+
+    const [weekNum, setWeekNum] = useState(0);
 
     const [isEditDay, setIsEditDay] = useState(false);
 
@@ -40,16 +53,50 @@ const PlanEditor = (props) => {
         return counts;
     };
 
-    const sortByQuantity = (a,b) => {
+    const sortByQuantity = (a, b) => {
         return a.quantity > b.quantity ? -1 : 1;
-    }
+    };
 
     const copyShoppingList = () => {
-        const copyText = neededIngredients.sort(sortByQuantity).reduce(
-            (text, ingredient) => text + reduceToPoint2(ingredient.quantity) + "x " + ingredient.name + " (" +ingredient.info+ ")\n",
-            ""
-        );
+        const copyText = neededIngredients
+            .sort(sortByQuantity)
+            .reduce(
+                (text, ingredient) =>
+                    text +
+                    reduceToPoint2(ingredient.quantity) +
+                    "x " +
+                    (ingredient.unit !== "item" ? ingredient.unit + " " : "") +
+                    ingredient.name +
+                    (ingredient.info ? " (" + ingredient.info + ")" : "") +
+                    "\n",
+                ""
+            );
         navigator.clipboard.writeText(copyText);
+    };
+
+    const eraseWeekHandler = () => {
+        setPlan((prevState) => ({
+            ...plan,
+            recipes: plan.recipes.filter(
+                (recipe) => !(weekNum * 7 <= recipe.day && recipe.day < (weekNum + 1) * 7)
+            ),
+        }));
+        setConfirmEraseWeek(false);
+    };
+
+    const createRandomPlan = () => {
+        let toSearchRecipes = [...props.recipes];
+        let foundRecipes = [];
+
+        for (let i = 0; i < 7; i++) {
+            foundRecipes.push({
+                ...toSearchRecipes.splice(Math.floor(Math.random() * toSearchRecipes.length), 1)[0],
+                day: i + weekNum * 7,
+            });
+        }
+
+        setPlan((prevState) => ({ ...plan, recipes: [...plan.recipes, ...foundRecipes] }));
+        setConfirmRandom(false)
     };
 
     useEffect(() => {
@@ -160,6 +207,20 @@ const PlanEditor = (props) => {
                     <p>{isError}</p>
                 </div>
             )}
+            {confirmEraseWeek && isEditing && (
+                <Confirmation
+                    onCancel={() => setConfirmEraseWeek(false)}
+                    onContinue={eraseWeekHandler}
+                    message={"Are you sure you want to erase all recipes from this week?"}
+                />
+            )}
+            {confirmRandom && isEditing && (
+                <Confirmation
+                    onCancel={() => setConfirmRandom(false)}
+                    onContinue={createRandomPlan}
+                    message={"Are you sure you want to add a random recipe to all days from this week?"}
+                />
+            )}
             {confirm && !isEditing && !plan.new && (
                 <Confirmation
                     onCancel={() => setConfirm(false)}
@@ -243,9 +304,19 @@ const PlanEditor = (props) => {
                             <FontAwesomeIcon icon={faTrashCan} />
                         </Button>
                     )}
+                    {isEditing && plan.new && (
+                        <Button classes={classes.edit} onClick={() => setConfirmRandom(true)}>
+                            <FontAwesomeIcon icon={faRotate} />
+                        </Button>
+                    )}
                     {isEditing && (
-                        <Button classes={classes.edit} onClick={savePlan}>
+                        <Button classes={classes.save} onClick={savePlan}>
                             <FontAwesomeIcon icon={faSave} />
+                        </Button>
+                    )}
+                    {isEditing && (
+                        <Button classes={classes.erase} onClick={() => setConfirmEraseWeek(true)}>
+                            <FontAwesomeIcon icon={faEraser} />
                         </Button>
                     )}
                     {isEditing && (
@@ -261,6 +332,8 @@ const PlanEditor = (props) => {
                     ingredients={props.ingredients}
                     isEditing={isEditing}
                     setIsEditDay={setIsEditDay}
+                    weekNum={weekNum}
+                    setWeekNum={setWeekNum}
                 />
             </div>
             {(!plan.new || isEditing) && (

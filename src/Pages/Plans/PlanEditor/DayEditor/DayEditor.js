@@ -44,7 +44,7 @@ const DayEditor = (props) => {
     }
 
     const removeRecipe = (recipeId) => {
-        setAddedRecipes((prevState) => prevState.filter((recipe) => recipe.id !== recipeId))
+        setAddedRecipes((prevState) => prevState.filter((recipe) => recipe.id !== recipeId || recipe.day !== props.day.id))
     }
 
     const customDataCellsForRecipes = (recipe) => {
@@ -84,7 +84,7 @@ const DayEditor = (props) => {
                 <div className={classes.recipeList}>
                     <RecipeBoxesList
                         recipes={props.recipes.filter(
-                            (recipe) => !addedRecipes.map((recipe) => recipe.id).includes(recipe.id)
+                            (propsRecipe) => !addedRecipes.find((addedRecipe) => (addedRecipe.id === propsRecipe.id && addedRecipe.day === props.day.id)) 
                         )}
                         handleAddButtonClick={() => setIsAddingRecipe(true)}
                         handleClickOnRecipe={handleAddRecipeToDay}

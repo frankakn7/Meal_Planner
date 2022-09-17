@@ -6,6 +6,7 @@
     --imperial-red: #ef233cff;
     --amaranth-red: #d90429ff;
     --yes-green: #28d155;
+    --warning-yellow: #e6bf00;
 }
 
 body {
@@ -15,6 +16,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--space-cadet);
+}
+
+input {
+    border: 1px solid var(--space-cadet);
 }
 
 code {

@@ -10,7 +10,7 @@
     align-items: center;
     flex-direction: column;
     max-height: 15rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .table {
